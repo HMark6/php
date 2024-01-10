@@ -39,6 +39,8 @@ else {
     </div>
   </div>
 </nav>
+<h4>Találatok: <span id="txtHint"></span></h4>
+
 <?php
 if(isset($msg)) echo "<h2>$msg</h2>";
 ?>
