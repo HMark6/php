@@ -33,7 +33,7 @@ else {
 ?>
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Keresés" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Keresés" aria-label="Search" onkeyup="showHint(this.value)">
         <button class="btn btn-outline-success" type="submit">Keresés</button>
       </form>
     </div>
@@ -42,3 +42,21 @@ else {
 <?php
 if(isset($msg)) echo "<h2>$msg</h2>";
 ?>
+
+<script>
+function showHint(str) {
+  if (str.length > 1) {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET", "controller/gethint.php?q=" + str, true);
+    xmlhttp.send();
+  }
+}
+</script>
