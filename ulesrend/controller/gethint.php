@@ -25,7 +25,7 @@ $q = $_REQUEST["q"];
 
 $hint = "";
 
-// lookup all hints from array if $q is different from ""
+
 if ($q !== "") {
   $q = strtolower($q);
   $len=strlen($q);
